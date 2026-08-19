@@ -1,45 +1,42 @@
 import React, { useState } from 'react';
-import { Home, Radio, Music, ListMusic, Crown, User, Play, Pause, SkipForward, SkipBack } from 'lucide-react';
+import { Home, Radio, Music, ListMusic, Crown } from 'lucide-react';
+import StreamPage from './StreamPage';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
-  const [isPlaying, setIsPlaying] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#0D0D12] text-white flex flex-col justify-between max-w-md mx-auto relative pb-20 shadow-2xl font-sans">
       
       {/* ОСНОВНОЙ КОНТЕНТ */}
-      <main className="p-4 flex-1 overflow-y-auto">
+      <main className="flex-1 overflow-y-auto">
         {activeTab === 'home' && (
-          <div className="space-y-4">
+          <div className="p-4 space-y-4">
             <h1 className="text-2xl font-bold">Lumi Music</h1>
             <p className="text-xs text-gray-400">Добро пожаловать в чистую версию приложения!</p>
           </div>
         )}
 
         {activeTab === 'stream' && (
-          <div className="space-y-4">
-            <h1 className="text-2xl font-bold">Прямой эфир</h1>
-            <p className="text-xs text-gray-400">Здесь будет глобальный чат и друзья (30/70)</p>
-          </div>
+          <StreamPage onBack={() => setActiveTab('home')} />
         )}
 
         {activeTab === 'library' && (
-          <div className="space-y-4">
+          <div className="p-4 space-y-4">
             <h1 className="text-2xl font-bold">Библиотека</h1>
             <p className="text-xs text-gray-400">Список твоих треков</p>
           </div>
         )}
 
         {activeTab === 'playlist' && (
-          <div className="space-y-4">
+          <div className="p-4 space-y-4">
             <h1 className="text-2xl font-bold">Плейлисты</h1>
             <p className="text-xs text-gray-400">Создание и управление плейлистами</p>
           </div>
         )}
 
         {activeTab === 'premium' && (
-          <div className="space-y-4">
+          <div className="p-4 space-y-4">
             <h1 className="text-2xl font-bold">Премиум</h1>
             <p className="text-xs text-gray-400">Тарифы: $3/мес, $29/год и реклама</p>
           </div>
